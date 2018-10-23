@@ -3,12 +3,12 @@ import * as _ from 'lodash';
 import { Lesson } from 'app/shared/model/lesson';
 
 export interface Observer {
-    next(data:any);
+    next(data: any);
 }
 
 export interface Observable {
-    subscribe(obs:Observer);
-    unsubscribe(obs:Observer);
+    subscribe(obs: Observer);
+    unsubscribe(obs: Observer);
 }
 
 interface Subject extends Observer, Observable {
@@ -44,14 +44,3 @@ export function initializeLessonsList(newList: Lesson[]) {
     lessons = _.cloneDeep(newList);
     lessonsListSubject.next(lessons);
 }
-
-
-
-
-
-
-
-
-
-
-

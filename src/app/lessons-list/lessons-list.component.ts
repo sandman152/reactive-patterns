@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Lesson} from "../shared/model/lesson";
+import { Component, OnInit } from '@angular/core';
+import { Lesson } from "../shared/model/lesson";
 import * as _ from 'lodash';
 import { Observer, lessonsList$ } from 'app/event-bus-experiments/app-data';
 
@@ -10,7 +10,7 @@ import { Observer, lessonsList$ } from 'app/event-bus-experiments/app-data';
 })
 export class LessonsListComponent implements Observer, OnInit {
 
-    lessons: Lesson[] =[];
+    lessons: Lesson[] = [];
 
     ngOnInit() {
         lessonsList$.subscribe(this);
@@ -21,19 +21,13 @@ export class LessonsListComponent implements Observer, OnInit {
         this.lessons = data.slice(0);
     }
 
-    toggleLessonViewed(lesson:Lesson) {
+    toggleLessonViewed(lesson: Lesson) {
         console.log('toggling lesson ...');
         lesson.completed = !lesson.completed;
     }
 
-    delete(deleted:Lesson) {
+    delete(deleted: Lesson) {
         _.remove(this.lessons,
-            lesson => lesson.id === deleted.id )
+            lesson => lesson.id === deleted.id)
     }
-
-
-
 }
-
-
-

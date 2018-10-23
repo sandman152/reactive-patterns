@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {testLessons} from "../shared/model/test-lessons";
-import {Lesson} from "../shared/model/lesson";
+import { Component, OnInit } from '@angular/core';
+import { testLessons } from "../shared/model/test-lessons";
 import { initializeLessonsList } from './app-data';
 
 @Component({
@@ -11,13 +10,11 @@ import { initializeLessonsList } from './app-data';
 export class EventBusExperimentsComponent implements OnInit {
 
     ngOnInit() {
-
         console.log('Top level component broadcasted all lessons ...');
 
         initializeLessonsList(testLessons.slice(0));
 
         setTimeout(() => {
-
             const newLesson = {
                 id: Math.random(),
                 description: 'New lesson arriving from the backend'
@@ -26,23 +23,9 @@ export class EventBusExperimentsComponent implements OnInit {
             //TODO
 
         }, 10000);
-
     }
 
     addLesson(lessonText: string) {
         //TODO
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
