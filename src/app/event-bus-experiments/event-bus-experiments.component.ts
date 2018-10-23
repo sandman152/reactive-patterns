@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { globalEventBus } from './event-bus';
+import { globalEventBus, LESSONS_LIST_AVAIALABLE } from './event-bus';
 import { testLessons } from 'app/shared/model/test-lessons';
 
 @Component({
@@ -13,7 +13,7 @@ export class EventBusExperimentsComponent implements OnInit {
 
   ngOnInit() {
     console.log('Top Level component broadcasted all lessons...');
-    globalEventBus.notifyObservers(testLessons);
+    globalEventBus.notifyObservers(LESSONS_LIST_AVAIALABLE, testLessons.slice(0));
   }
 
 }
