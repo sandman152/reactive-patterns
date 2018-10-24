@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { testLessons } from "../shared/model/test-lessons";
-import { initializeLessonsList } from './app-data';
+import { store } from './app-data';
 
 @Component({
     selector: 'event-bus-experiments',
@@ -12,7 +12,7 @@ export class EventBusExperimentsComponent implements OnInit {
     ngOnInit() {
         console.log('Top level component broadcasted all lessons ...');
 
-        initializeLessonsList(testLessons.slice(0));
+        store.initializeLessonsList(testLessons.slice(0));
 
         setTimeout(() => {
             const newLesson = {
