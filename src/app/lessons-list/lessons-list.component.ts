@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Lesson } from "../shared/model/lesson";
+import {Component, OnInit} from '@angular/core';
+import {Lesson} from "../shared/model/lesson";
 import * as _ from 'lodash';
-import { Observer, store} from 'app/event-bus-experiments/app-data';
+import {Observer, store} from "../event-bus-experiments/app-data";
 
 @Component({
     selector: 'lessons-list',
@@ -13,7 +13,7 @@ export class LessonsListComponent implements Observer, OnInit {
     lessons: Lesson[] = [];
 
     ngOnInit() {
-        store.subscribe(this);
+        store.lessonsList$.subscribe(this);
     }
 
     next(data: Lesson[]) {
@@ -21,12 +21,18 @@ export class LessonsListComponent implements Observer, OnInit {
         this.lessons = data;
     }
 
-    toggleLessonViewed(lesson: Lesson) {
+    toggleLessonViewed(lesson:Lesson) {
         console.log('toggling lesson ...');
         store.toggleLessonViewed(lesson);
     }
 
-    delete(deleted: Lesson) {
+    delete(deleted:Lesson) {
         store.deleteLesson(deleted);
     }
+
+
+
 }
+
+
+
