@@ -13,7 +13,7 @@ export class LessonsCounterComponent implements Observer, OnInit {
 
     ngOnInit(): void {
         console.log('lesson list component is registered as observer ..');
-        store.lessonsList$.subscribe(this);
+        store.subscribe(this);
     }
 
     next(data: Lesson[]) {
