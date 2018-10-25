@@ -1,4 +1,4 @@
-import { Subject, Observable, Observer } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Lesson } from 'app/shared/model/lesson';
 import * as _ from 'lodash';
 
@@ -6,7 +6,7 @@ class DataStore {
 
     private lessons : Lesson[]  = [];
 
-    private lessonsListSubject = new Subject;
+    private lessonsListSubject = new Subject<Lesson[]>();
 
     public lessonsList$: Observable<Lesson[]> = this.lessonsListSubject.asObservable();
 
