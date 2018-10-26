@@ -1,9 +1,9 @@
 
 
 export interface Lesson {
-    id: number;
+    id: string;
     description: string;
-    duration: string;
+    duration?: string;
     url?: string;
     tags?: string;
     pro?: boolean;

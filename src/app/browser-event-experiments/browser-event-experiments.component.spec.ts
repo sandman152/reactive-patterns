@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LessonsCounterComponent } from './lessons-counter.component';
+import { BrowserEventExperimentsComponent } from './browser-event-experiments.component';
 
-describe('LessonsCounterComponent', () => {
-  let component: LessonsCounterComponent;
-  let fixture: ComponentFixture<LessonsCounterComponent>;
+describe('BrowserEventExperimentsComponent', () => {
+  let component: BrowserEventExperimentsComponent;
+  let fixture: ComponentFixture<BrowserEventExperimentsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LessonsCounterComponent ]
+      declarations: [ BrowserEventExperimentsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LessonsCounterComponent);
+    fixture = TestBed.createComponent(BrowserEventExperimentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

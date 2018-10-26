@@ -1,25 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { globalEventBus, Observer } from 'app/event-bus-experiments/event-bus';
-import { Lesson } from 'app/shared/model/lesson';
+import {Component, OnInit} from '@angular/core';
+import {Lesson} from "../shared/model/lesson";
+import * as _ from 'lodash';
+import {store} from "../event-bus-experiments/app-data";
+import {Observer} from 'rxjs';
 
 @Component({
-  selector: 'lessons-list',
-  templateUrl: './lessons-list.component.html',
-  styleUrls: ['./lessons-list.component.css']
+    selector: 'lessons-list',
+    templateUrl: './lessons-list.component.html',
+    styleUrls: ['./lessons-list.component.css']
 })
-export class LessonsListComponent implements Observer {
+export class LessonsListComponent implements Observer<Lesson[]>, OnInit {
 
-  lessons: Lesson[] = [];
+    lessons: Lesson[] = [];
 
-  constructor() {
-    console.log('lessons list component is registered as an observer');
-    globalEventBus.registerObserver(this);
-  }
+    ngOnInit() {
+        store.lessonsList$.subscribe(this);
+    }
+
+    next(data: Lesson[]) {
+        console.log('Lessons list component received data ..');
+        this.lessons = data;
+    }
+
+    error(err: any)  {
+        console.error(err);
+    };
 
 
-  notify(data: Lesson[]) {
-    console.log('Lessons list component recieved data');
-    this.lessons = data;
-  }
+    complete() {
+        console.log('completed');
+    };
+
+    toggleLessonViewed(lesson:Lesson) {
+        console.log('toggling lesson ...');
+        store.toggleLessonViewed(lesson);
+    }
+
+    delete(deleted:Lesson) {
+        store.deleteLesson(deleted);
+    }
+
+
 
 }
+
+
+
